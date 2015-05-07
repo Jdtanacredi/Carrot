@@ -8,7 +8,7 @@ Tasks = new Mongo.Collection('tasks');
     // ]
     tasks: function () {
     	console.log('meow');
-	      return Tasks.find({});
+	      return Tasks.find({}, {sort: {createdAt: -1}});
 	  }
   });
 
@@ -28,26 +28,25 @@ Tasks = new Mongo.Collection('tasks');
 //     }
 //   });
 
-  // Template.body.events({
-  //   "submit .new-task": function (event) {
-  //     var text = event.target.text.value;
-  //     console.log('submit worked!');
+  Template.body.events({
+    "submit .new-task": function (event) {
+    
+      var taskItem = event.target.text.value;
 
-  //     Tasks.insert({
-  //       text: text,
-  //       createdAt: new Date(),
+      Tasks.insert({
+        text: taskItem,
+        createdAt: new Date()//,
   //       owner: Meteor.userId(),
   //       username: Meteor.user().username
-  //     });
+      });
+        event.target.text.value = "";
 
-  //     event.target.text.value = "";
-
-  //     return false;
+      return false;
   //   },
   //   "change .hide-completed input": function(event) {
   //     Session.set("hideCompleted", event.target.checked);
-  //   }
-  // });
+    }
+  });
 
   // Template.task.events({
   //   "click .toggle-checked": function() {
