@@ -1,19 +1,11 @@
 Tasks = new Mongo.Collection('tasks');
 
   Template.task.helpers({
-    // tasks: [
-    //   { text: "This is task 1" },
-    //   { text: "This is task 2" },
-    //   { text: "This is task 3" }
-    // ]
     tasks: function () {
     	console.log('meow');
 	      return Tasks.find({}, {sort: {createdAt: -1}});
 	  }
   });
-
-
-
 
   Template.task.events({
     "submit .new-task": function (event) {
@@ -22,9 +14,8 @@ Tasks = new Mongo.Collection('tasks');
 
       Tasks.insert({
         text: taskItem,
-        createdAt: new Date()//,
-  //       owner: Meteor.userId(),
-  //       username: Meteor.user().username
+        createdAt: new Date(),
+        owner: Meteor.userId(),
       });
         event.target.text.value = "";
 

@@ -17,3 +17,10 @@ Router.route('/taskList', {
   action: 'action',
   where: 'client'
 });
+
+Router.route('/carrotList', {
+  name: 'carrotList',
+  controller: 'CarrotListController',
+  action: 'action',
+  where: 'client'
+});

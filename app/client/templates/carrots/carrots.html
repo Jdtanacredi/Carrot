@@ -1,0 +1,18 @@
+<template name="carrotList">
+	<div class="container">
+	  <header>
+	      <form class="new-carrot">
+	        <input type="text" name="text" placeholder="Type to add new carrot" />
+	      </form>
+	  </header>
+		<ul>
+			{{#each carrots}}
+				{{carrot}}
+			{{/each}}
+		</ul>
+	</div>
+</template>
+
+<template name="carrot">
+	<li>{{name}}</li>
+</template>
