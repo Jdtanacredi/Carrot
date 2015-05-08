@@ -1,3 +1,9 @@
 <template name="Home">
-  <h1>Find me in app/client/templates/home/home</h1>
+test
+  {{#if currentUser}}
+  <p><a href="#" class="logout">Logout</a></p>
+  {{else}}
+  	{{> userLogin}}
+  	{{> userRegister}}
+  {{/if}}
 </template>

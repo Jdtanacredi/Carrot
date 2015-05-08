@@ -2,6 +2,10 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.Home.events({
+	'click .logout': function(event) {
+		event.preventDefault();
+		Meteor.logout();
+	}
 });
 
 /*****************************************************************************/

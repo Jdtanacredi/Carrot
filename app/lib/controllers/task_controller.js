@@ -5,6 +5,6 @@ TaskListController = RouteController.extend({
   },
 
   action: function() {
-    this.render('taskList');
+    this.render('task');
   }
 });

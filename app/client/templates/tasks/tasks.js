@@ -1,6 +1,6 @@
 Tasks = new Mongo.Collection('tasks');
 
-  Template.body.helpers({
+  Template.task.helpers({
     // tasks: [
     //   { text: "This is task 1" },
     //   { text: "This is task 2" },
@@ -12,23 +12,10 @@ Tasks = new Mongo.Collection('tasks');
 	  }
   });
 
-// Template.body.helpers({
-//     tasks: function() {
-//       if (Session.get('hideCompleted')) {
-//         return Tasks.find({checked: {$ne: true}}, {sort: {createdAt: -1}});
-//       } else {
-//         return Tasks.find({}, {sort: {createdAt: -1}});
-//       } 
-//     },
-//     hideCompleted: function () {
-//       return Session.get("hideCompleted");
-//     },
-//     incompleteCount: function () {
-//       return Tasks.find({checked: {$ne: true}}).count();
-//     }
-//   });
 
-  Template.body.events({
+
+
+  Template.task.events({
     "submit .new-task": function (event) {
     
       var taskItem = event.target.text.value;
@@ -59,3 +46,20 @@ Tasks = new Mongo.Collection('tasks');
   // Accounts.ui.config({
   //   passwordSignupFields: "USERNAME_ONLY"
   // });
+
+
+// Template.body.helpers({
+//     tasks: function() {
+//       if (Session.get('hideCompleted')) {
+//         return Tasks.find({checked: {$ne: true}}, {sort: {createdAt: -1}});
+//       } else {
+//         return Tasks.find({}, {sort: {createdAt: -1}});
+//       } 
+//     },
+//     hideCompleted: function () {
+//       return Session.get("hideCompleted");
+//     },
+//     incompleteCount: function () {
+//       return Tasks.find({checked: {$ne: true}}).count();
+//     }
+//   });
