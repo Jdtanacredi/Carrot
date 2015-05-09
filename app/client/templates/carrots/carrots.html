@@ -3,16 +3,28 @@
 	  <header>
 	      <form class="new-carrot">
 	        <input type="text" name="text" placeholder="Type to add new carrot" />
+	       	<select class="taskSelect">
+	       	 	{{#each pullTaskList}}
+	       			{{> taskDropdown}}
+	       		{{/each}}
+	       	</select>
 	      </form>
 	  </header>
 		<ul>
 			{{#each carrots}}
-				{{carrot}}
+				{{> carrot}}
 			{{/each}}
 		</ul>
 	</div>
 </template>
 
 <template name="carrot">
-	<li>{{name}}</li>
+	<li>
+		<div>Reward: {{carrot}}</div>
+		<div>Tasks to complete: {{task this.tasks}}</div>
+	</li>
+</template>
+
+<template name="taskDropdown">
+<option value="{{_id}}">{{text}}</option>
 </template>

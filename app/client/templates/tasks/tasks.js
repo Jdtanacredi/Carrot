@@ -1,5 +1,3 @@
-Tasks = new Mongo.Collection('tasks');
-
   Template.task.helpers({
     tasks: function () {
     	console.log('meow');
