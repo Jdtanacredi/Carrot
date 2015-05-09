@@ -1,7 +1,7 @@
 <template name="Home">
-test
   {{#if currentUser}}
   <p><a href="#" class="logout">Logout</a></p>
+  	{{> task }}
   {{else}}
   	{{> userLogin}}
   	{{> userRegister}}

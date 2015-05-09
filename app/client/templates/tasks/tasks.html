@@ -5,7 +5,6 @@
         <input type="text" name="text" placeholder="Type to add new tasks" />
       </form>
     </header>
-
     <ul>
       {{#each tasks}} 
         {{> taskItem}}
@@ -17,5 +16,5 @@
 
 
 <template name="taskItem">
-  <li>{{text}}</li>
+  <li><div>{{text}}</div><div>{{owner this.owner}}</div></li>
 </template>

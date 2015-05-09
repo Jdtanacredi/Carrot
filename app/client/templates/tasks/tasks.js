@@ -1,8 +1,15 @@
   Template.task.helpers({
     tasks: function () {
-    	console.log('meow');
 	      return Tasks.find({}, {sort: {createdAt: -1}});
 	  }
+  });
+
+  Template.taskItem.helpers({
+    owner: function (id) {
+      console.log('meow');
+    // return id;
+      return Meteor.users.findOne(id).profile.name;
+    }
   });
 
   Template.task.events({
@@ -13,7 +20,7 @@
       Tasks.insert({
         text: taskItem,
         createdAt: new Date(),
-        owner: Meteor.userId(),
+        owner: Meteor.userId()
       });
         event.target.text.value = "";
 
