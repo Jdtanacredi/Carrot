@@ -1,13 +1,13 @@
   Template.task.helpers({
     tasks: function () {
-	      return Tasks.find({}, {sort: {createdAt: -1}});
+        console.log('currentUser: ' + Meteor.userId());
+	      return Tasks.find({}, {sort: {createdAt: -1, owner: Meteor.userId()}});
 	  }
   });
 
   Template.taskItem.helpers({
     owner: function (id) {
-      console.log('meow');
-    // return id;
+      console.log('id: ' + id);
       return Meteor.users.findOne(id).profile.name;
     }
   });

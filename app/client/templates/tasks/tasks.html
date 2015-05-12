@@ -1,4 +1,5 @@
 <template name="task">
+{{#if currentUser}}
   <div class="container">
     <header>
       <form class="new-task">
@@ -11,6 +12,7 @@
       {{/each}}
     </ul>
   </div>
+  {{/if}}
 </template>
 
 

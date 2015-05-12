@@ -14,3 +14,7 @@ Tasks = new Mongo.Collection('tasks');
     });
 
   });
+
+  // CALL ABOVE FUNCTION WITH
+
+  // Meteor.call('removeAllTasks')
