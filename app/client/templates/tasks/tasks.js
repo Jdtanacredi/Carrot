@@ -1,7 +1,7 @@
   Template.task.helpers({
     tasks: function () {
         console.log('currentUser: ' + Meteor.userId());
-	      return Tasks.find({}, {sort: {createdAt: -1, owner: Meteor.userId()}});
+	      return Tasks.find({owner: Meteor.userId()}, {sort: {createdAt: -1}});
 	  }
   });
 
