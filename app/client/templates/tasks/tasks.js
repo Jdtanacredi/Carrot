@@ -28,7 +28,18 @@
   //   },
   //   "change .hide-completed input": function(event) {
   //     Session.set("hideCompleted", event.target.checked);
+    },
+    "click .toggleComplete": function (event) {
+
+        var thisclick = $(this).get(0);
+        console.log(thisclick);
+        // thisclick.toggleClass('complete');
+
+        // console.log(event.target);
+      return false;
     }
+
+
   });
 
   // Template.task.events({

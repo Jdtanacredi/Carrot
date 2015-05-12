@@ -2,10 +2,10 @@
 
 Template.carrotList.helpers({
 	carrots: function () {
-		return Carrots.find({}, {sort: {createdAt: -1}});
+		return Carrots.find({owner: Meteor.userId()}, {sort: {createdAt: -1}});
 	},
 	pullTaskList: function () {
-		return Tasks.find({}, {sort: {createdAt: -1}});
+		return Tasks.find({owner: Meteor.userId()}, {sort: {createdAt: -1}});
 	}
 	
 });
