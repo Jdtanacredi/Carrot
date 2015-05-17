@@ -6,11 +6,18 @@
         <input type="text" name="text" placeholder="Type to add new tasks" />
       </form>
     </header>
-    <ul>
+    <ul class="pendingTasks">
+			<h3>pending tasks</h3>
       {{#each tasks}} 
         {{> taskItem}}
       {{/each}}
     </ul>
+		<ul class="completedTasks">
+			<h3>completed</h3>
+			{{#each completedTasks}}
+				{{> taskItem}}
+			{{/each}}
+		</ul>
   </div>
   {{/if}}
 </template>
@@ -18,9 +25,11 @@
 
 
 <template name="taskItem">
-  <li>
-  <div>{{text}}</div>
-  <div>{{owner this.owner}}</div>
-  <div class="toggleComplete">This will be a checkbox</div>
+  <li class="taskItem {{#if checked}}checked{{/if}}">
+		<input class="toggleComplete" id="option" type="checkbox" value="option" checked="{{checked}}">
+  	<label for="option">Value</label>
+<!--  	<div class="toggleComplete">This will be a checkbox</div>-->
+		<div>{{text}}</div>
+  	<div>{{owner this.owner}}</div>
   </li>
 </template>

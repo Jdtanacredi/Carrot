@@ -1,8 +1,11 @@
   Template.task.helpers({
     tasks: function () {
         console.log('currentUser: ' + Meteor.userId());
-	      return Tasks.find({owner: Meteor.userId()}, {sort: {createdAt: -1}});
-	  }
+	      return Tasks.find({owner: Meteor.userId(), checked: {$ne: true}}, {sort: {createdAt: -1}});
+	  },
+		completedTasks: function () {
+			return Tasks.find({owner: Meteor.userId(), checked: {$ne: false}}, {sort: {createdAt: -1}});
+		}
   });
 
   Template.taskItem.helpers({
@@ -37,7 +40,10 @@
 
         // console.log(event.target);
       return false;
-    }
+    },
+		"click .toggleComplete": function() {
+			Tasks.update(this._id, {$set: {checked: ! this.checked}});
+		}
 
 
   });
