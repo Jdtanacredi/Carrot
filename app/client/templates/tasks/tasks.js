@@ -1,3 +1,5 @@
+Meteor.subscribe("tasks");
+
 Template.task.helpers({
 	tasks: function () {
 			console.log('currentUser: ' + Meteor.userId());
