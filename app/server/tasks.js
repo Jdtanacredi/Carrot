@@ -4,6 +4,12 @@ Meteor.publish("tasks", function () {
 	return Tasks.find();
 });
 
+Meteor.methods({
+	setChecked: function (taskId) {
+		Tasks.update(this._id, {$set: {checked: ! this.checked}});
+	}
+});
+
 
   Meteor.startup(function() {
 

@@ -38,7 +38,10 @@ Template.task.events({
 		return false;
 	},
 	"click .toggleComplete": function() {
+		var thisclick = $(this).get(0);
+		console.log(thisclick);
 		Meteor.call("setChecked", this._id, ! this.checked);
+		return false;
 	}
 
 
@@ -58,7 +61,7 @@ Meteor.methods({
 	},
 	deleteTask: function (taskId) {
 	},
-	setChecked: function (taskId, setChecked) {
+	setChecked: function (taskId) {
 		Tasks.update(this._id, {$set: {checked: ! this.checked}});
 	}
 });
