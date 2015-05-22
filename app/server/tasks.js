@@ -5,8 +5,25 @@ Meteor.publish("tasks", function () {
 });
 
 Meteor.methods({
+	addTask: function (text) {
+		if (! Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+			return false;
+		}
+		
+		Tasks.insert({
+			text: text,
+			createdAt: new Date(),
+			owner: Meteor.userId(),
+			checked: false
+		});
+		return false;
+	},
+	deleteTask: function (taskId) {
+	},
 	setChecked: function (taskId) {
 		Tasks.update(this._id, {$set: {checked: ! this.checked}});
+		console.log(this);
 	}
 });
 

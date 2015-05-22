@@ -19,14 +19,10 @@ Template.taskItem.helpers({
 
 Template.task.events({
 	"submit .new-task": function (event) {
-
 		var taskItem = event.target.text.value;
-
 		Meteor.call("addTask", taskItem);
-		
 		event.target.text.value = "";
-
-		return false;
+		return false;		
 //   },
 //   "change .hide-completed input": function(event) {
 //     Session.set("hideCompleted", event.target.checked);
@@ -41,27 +37,16 @@ Template.task.events({
 		var thisclick = $(this).get(0);
 		console.log(thisclick);
 		Meteor.call("setChecked", this._id, ! this.checked);
-		return false;
 	}
 
 
 });
 
 Meteor.methods({
-	addTask: function (text) {
-		if (! Meteor.userId()) {
-			throw new Meteor.Error("not-authorized");
-		}
-		
-		Tasks.insert({
-			text: taskItem,
-			createdAt: new Date(),
-			owner: Meteor.userId()
-		});
-	},
 	deleteTask: function (taskId) {
 	},
 	setChecked: function (taskId) {
 		Tasks.update(this._id, {$set: {checked: ! this.checked}});
+		console.log(this);
 	}
 });
