@@ -7,7 +7,7 @@ Template.task.helpers({
 			//return Tasks.find({owner: Meteor.userId(), checked: 0}, {sort: {createdAt: -1}});
 	},
 	completedTasks: function () {
-		return Tasks.find({owner: Meteor.userId(), checked:  1}, {sort: {createdAt: -1}});
+		return Tasks.find({owner: Meteor.userId(), checked:  {$ne: false}}, {sort: {createdAt: -1}});
 	}
 });
 

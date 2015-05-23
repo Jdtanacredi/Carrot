@@ -13,16 +13,14 @@ Meteor.methods({
 		Tasks.insert({
 			text: text,
 			createdAt: new Date(),
-			owner: Meteor.userId(),
-			checked: 0
+			owner: Meteor.userId()
 		});
 		return false;
 	},
 	deleteTask: function (taskId) {
 	},
-	setChecked: function (taskId, checked) {
-		console.log('checked');
-		Tasks.update(this._id, {$set: {checked: ! checked}});
+	setChecked: function (taskId, setChecked) {
+		Tasks.update(taskId, {$set: {checked: setChecked}});
 		// (query, {$inc: {flag: 1}}) LOOK INTO THIS:     http://stackoverflow.com/questions/10506878/how-to-toggle-a-boolean-field-in-an-array-element-in-mongodb
 	}
 });
