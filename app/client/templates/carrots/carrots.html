@@ -21,7 +21,7 @@
 <template name="carrot">
 	<li>
 		<div>Reward: {{carrot}}</div>
-		<div>Tasks to complete: {{task this.tasks}}</div>
+		<div>Tasks to complete: <ul class="carrotTasks-{{_id}}">{{task this.tasks this._id}}</ul></div>
 	</li>
 </template>
 

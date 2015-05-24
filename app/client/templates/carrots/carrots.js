@@ -11,14 +11,16 @@ Template.carrotList.helpers({
 });
 
 Template.carrot.helpers({
-	task: function (id) {
+	task: function (id, carrotId) {
+		var relatedTasks = "";
+		console.log(id);
 //		var relatedTasks = Tasks.findOne({_id: id});
-		
-//		console.log(id);
 		jQuery.each(id, function(index, taskId) {
-			console.log(taskId);
+			var testing = Tasks.findOne({_id: taskId});
+			relatedTasks +="<li>" + testing.text + "</li>";
 		});
-			return relatedTasks.text;
+		$('.carrotTasks-' + carrotId).append(relatedTasks);
+		relatedTasks = "";
 	}
 });
 
