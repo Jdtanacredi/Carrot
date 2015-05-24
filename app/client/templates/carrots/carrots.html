@@ -3,11 +3,11 @@
 	  <header>
 	      <form class="new-carrot">
 	        <input type="text" name="text" placeholder="Type to add new carrot" />
-	       	<select class="taskSelect">
+	       	<div class="taskSelect">
 	       	 	{{#each pullTaskList}}
 	       			{{> taskDropdown}}
 	       		{{/each}}
-	       	</select>
+	       	</div>
 	      </form>
 	  </header>
 		<ul>
@@ -26,5 +26,6 @@
 </template>
 
 <template name="taskDropdown">
-<option value="{{_id}}">{{text}}</option>
+<input class="associatedTasks" type="checkbox" value="{{_id}}" id="{{_id}}">
+<label for="{{_id}}">{{text}}</label>
 </template>
