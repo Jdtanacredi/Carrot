@@ -2,7 +2,7 @@ Meteor.subscribe("tasks");
 
 Template.task.helpers({
 	tasks: function () {
-			console.log('currentUser: ' + Meteor.userId());
+//			console.log('currentUser: ' + Meteor.userId());
 			return Tasks.find({owner: Meteor.userId(), checked: {$ne: true}}, {sort: {createdAt: -1}});
 			//return Tasks.find({owner: Meteor.userId(), checked: 0}, {sort: {createdAt: -1}});
 	},

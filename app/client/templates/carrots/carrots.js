@@ -1,4 +1,4 @@
-
+Meteor.subscribe("carrots");
 
 Template.carrotList.helpers({
 	carrots: function () {
@@ -22,13 +22,7 @@ Template.carrotList.events({
 	"submit .new-carrot": function(event) {
 		var carrotReward = event.target.text.value;
 		var associatedTask = $( ".taskSelect").val();
-
-		Carrots.insert({
-			carrot: carrotReward,
-			createdAt: new Date(),
-			owner: Meteor.userId(),
-			tasks: associatedTask
-		});
+		Meteor.call("addCarrot", carrotReward, associatedTask);
 		return false;
 	}
 });

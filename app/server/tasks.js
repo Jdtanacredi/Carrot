@@ -31,5 +31,5 @@ Meteor.startup(function() {
 			return Tasks.remove({});
 				// CALL FUNCTION WITH Meteor.call('removeAllTasks'); in inspector console. Will remove all db tasks
     }
-  });
+  });	
 });
