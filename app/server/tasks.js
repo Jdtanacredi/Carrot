@@ -13,7 +13,8 @@ Meteor.methods({
 		Tasks.insert({
 			text: text,
 			createdAt: new Date(),
-			owner: Meteor.userId()
+			owner: Meteor.userId(),
+			checked: false
 		});
 		return false;
 	},
