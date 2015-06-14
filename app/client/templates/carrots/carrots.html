@@ -21,7 +21,14 @@
 <template name="carrot">
 	<li>
 		<div>Reward: {{carrot}}</div>
-		<div>Tasks to complete: <ul class="carrotTasks-{{_id}}">{{task this.tasks this._id}}</ul></div>
+		<div>Tasks to complete: 
+	<ul class="carrotTasks-{{_id}}">
+	{{#each tasks}}
+		<li>{{text}}</li>
+	{{/each}}
+	<li></li>
+	</ul>
+		</div>
 	</li>
 </template>
 

@@ -7,19 +7,17 @@ Template.carrotList.helpers({
 	pullTaskList: function () {
 		return Tasks.find({owner: Meteor.userId()}, {sort: {createdAt: -1}});
 	}
-	
 });
 
 Template.carrot.helpers({
+	tasks: function (id) {
+		var taskIds = Template.instance().data.tasks;
+console.log(taskIds);
+		return Tasks.find({'_id':{$in:taskIds}});
+	},
 	task: function (id, carrotId) {
 		var relatedTasks = "";
 		console.log(id);
-//		var relatedTasks = Tasks.findOne({_id: id});
-		jQuery.each(id, function(index, taskId) {
-			var testing = Tasks.findOne({_id: taskId});
-			relatedTasks +="<li>" + testing.text + "</li>";
-		});
-		$('.carrotTasks-' + carrotId).append(relatedTasks);
 		relatedTasks = "";
 	}
 });
