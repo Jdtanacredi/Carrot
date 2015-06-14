@@ -11,3 +11,5 @@ accounts-facebook
 http
 email
 service-configuration
+cfs:standard-packages
+cfs:gridfs
