@@ -25,15 +25,6 @@ Meteor.methods({
 
 
 
-
-
-
-
-
-
-
-
-
   Meteor.startup(function() {
     return Meteor.methods({
       removeAllCarrots: function() {

@@ -6,6 +6,22 @@ Images = new FS.Collection("images", {
  stores: [imageStore]
 });
 
+// Should this go here!?!?
+Images.allow({
+ insert: function(){
+ return true;
+ },
+ update: function(){
+ return true;
+ },
+ remove: function(){
+ return true;
+ },
+ download: function(){
+ return true;
+ }
+});
+
 
 Template.carrotList.helpers({
 	carrots: function () {
@@ -41,6 +57,7 @@ Template.carrotList.events({
 // MOVE TO SERVER. ONCE FUNCTIONING, MOVE TO ON SUBMIT
 	'change .myFileInput': function(event, template) {
       FS.Utility.eachFile(event, function(file) {
+				// Images.insert(file); Seems to work, figure out why.
         Images.insert(file, function (err, fileObj) {
           if (err){
 						console.log(err);
