@@ -1,28 +1,5 @@
 Meteor.subscribe("carrots");
 
-var imageStore = new FS.Store.GridFS("images");
-
-Images = new FS.Collection("images", {
- stores: [imageStore]
-});
-
-// Should this go here!?!?
-Images.allow({
- insert: function(){
- return true;
- },
- update: function(){
- return true;
- },
- remove: function(){
- return true;
- },
- download: function(){
- return true;
- }
-});
-
-
 Template.carrotList.helpers({
 	carrots: function () {
 		return Carrots.find({owner: Meteor.userId()}, {sort: {createdAt: -1}});
@@ -54,24 +31,12 @@ Template.carrotList.events({
 		Meteor.call("addCarrot", carrotReward, associatedTasks);
 		return false;
 	},
-// MOVE TO SERVER. ONCE FUNCTIONING, MOVE TO ON SUBMIT
-	'change .myFileInput': function(event, template) {
-      FS.Utility.eachFile(event, function(file) {
-				// Images.insert(file); Seems to work, figure out why.
-        Images.insert(file, function (err, fileObj) {
-          if (err){
-						console.log(err);
-             // handle error
-          } else {
-             // handle success depending what you need to do
-            var userId = Meteor.userId();
-            var imagesURL = {
-              'profile.image': '/cfs/files/images/' + fileObj._id
-            };
-            //Meteor.users.update(userId, {$set: imagesURL});
-          }
-        });
-     });
+	"change .myFileInput": function(event, template) {
+		console.log(event);
+// NOT WORKING CAUSE EVENT IS A HUGE OBJECT. 
+// NEXT STEPS: FIND NECESSARY DATA!
+// http://stackoverflow.com/questions/17306385/meteor-rangeerror-maximum-call-stack-size-exceeded-on-keypress-event
+				Meteor.call("addImage", event);
    }
 });
 

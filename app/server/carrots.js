@@ -1,5 +1,26 @@
 Carrots = new Mongo.Collection('carrots');
 
+var imageStore = new FS.Store.GridFS("images");
+
+Images = new FS.Collection("images", {
+ stores: [imageStore]
+});
+
+Images.allow({
+ insert: function(){
+ return true;
+ },
+ update: function(){
+ return true;
+ },
+ remove: function(){
+ return true;
+ },
+ download: function(){
+ return true;
+ }
+});
+
 Meteor.publish("carrots", function () {
 	return Carrots.find();
 });
@@ -18,10 +39,25 @@ Meteor.methods({
 			tasks: tasks
 		});
 		return false;
+	},
+	addImage: function() {
+		FS.Utility.eachFile(event, function(file) {
+			Images.insert(file, function (err, fileObj) {
+				if (err){
+					console.log(err);
+					 // handle error
+				} else {
+					console.log('no error');
+					 // handle success depending what you need to do
+					var userId = Meteor.userId();
+					var imagesURL = {
+						'profile.image': '/cfs/files/images/' + fileObj._id
+					};
+				}
+			});
+		});
 	}
-
 });
-
 
 
 
