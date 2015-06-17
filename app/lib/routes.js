@@ -22,5 +22,8 @@ Router.route('/carrotList', {
   name: 'carrotList',
   controller: 'CarrotListController',
   action: 'action',
-  where: 'client'
+  where: 'client'//,
+//	waitOn: function () {
+// return Meteor.subscribe('images')
+// }
 });

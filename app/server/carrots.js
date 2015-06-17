@@ -1,10 +1,18 @@
 Carrots = new Mongo.Collection('carrots');
 
+Meteor.publish("carrots", function () {
+	return Carrots.find();
+});
+
+
 var imageStore = new FS.Store.GridFS("images");
 
 Images = new FS.Collection("images", {
  stores: [imageStore]
 });
+
+Meteor.publish("images", function(){ return Images.find(); });
+
 
 Images.allow({
  insert: function(){
@@ -21,9 +29,8 @@ Images.allow({
  }
 });
 
-Meteor.publish("carrots", function () {
-	return Carrots.find();
-});
+
+
 
 
 Meteor.methods({
