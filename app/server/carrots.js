@@ -47,21 +47,10 @@ Meteor.methods({
 		});
 		return false;
 	},
-	addImage: function() {
-		FS.Utility.eachFile(event, function(file) {
-			Images.insert(file, function (err, fileObj) {
-				if (err){
-					console.log(err);
-					 // handle error
-				} else {
-					console.log('no error');
-					 // handle success depending what you need to do
-					var userId = Meteor.userId();
-					var imagesURL = {
-						'profile.image': '/cfs/files/images/' + fileObj._id
-					};
-				}
-			});
+	addImage: function(userId,imagesURL) {
+		Images.insert({
+			image: imagesURL,
+			user: userId
 		});
 	}
 });

@@ -1,7 +1,9 @@
 Meteor.subscribe("carrots");
+Meteor.subscribe("images");
 
 FS.debug = true;
 var imageStore = new FS.Store.GridFS("images");
+
 
 Images = new FS.Collection("images", {
  stores: [imageStore]
@@ -57,6 +59,7 @@ Template.carrotList.events({
 	'change .myFileInput': function(event, template) {
       FS.Utility.eachFile(event, function(file) {
         Images.insert(file, function (err, fileObj) {
+					debugger;
           if (err){
              // handle error
           } else {
@@ -65,8 +68,10 @@ Template.carrotList.events({
             var imagesURL = {
               "profile.image": "/cfs/files/images/" + fileObj._id
             };
+						console.log("user: " + userId);
 						console.log(imagesURL);
-//            Meteor.users.update(userId, {$set: imagesURL});
+						Meteor.call("addImage",userId,imagesURL);
+						return false;
           }
         });
      });
