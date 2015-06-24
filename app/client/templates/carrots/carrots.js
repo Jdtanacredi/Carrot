@@ -29,24 +29,42 @@ Template.carrotList.events({
 		var associatedTasks = $(".associatedTasks:checked").map(function() {
 			return this.value;
 		}).get();
-		Meteor.call("addCarrot", carrotReward, associatedTasks);
+		debugger;
+		FS.Utility.eachFile(event, function(file) {
+			Images.insert(file, function (err, fileObj) {
+				console.log(file);
+				if (err){
+					 // handle error
+				} else {
+					 // handle success depending what you need to do
+//            var userId = Meteor.userId();
+					var imageID = fileObj._id;
+					var imagesURL = {
+						"profile.image": "/cfs/files/images/" + fileObj._id
+					};
+				}
+			});
+    });
+		
+		
+		Meteor.call("addCarrot", carrotReward, associatedTasks,imagesID);
 		return false;
 	},
 	'change .myFileInput': function(event, template) {
-      FS.Utility.eachFile(event, function(file) {
-        Images.insert(file, function (err, fileObj) {
-					console.log(file);
-          if (err){
-             // handle error
-          } else {
-             // handle success depending what you need to do
-//            var userId = Meteor.userId();
-            var imagesURL = {
-              "profile.image": "/cfs/files/images/" + fileObj._id
-            };
-          }
-        });
-     });
+//      FS.Utility.eachFile(event, function(file) {
+//        Images.insert(file, function (err, fileObj) {
+//					console.log(file);
+//          if (err){
+//             // handle error
+//          } else {
+//             // handle success depending what you need to do
+////            var userId = Meteor.userId();
+//            var imagesURL = {
+//              "profile.image": "/cfs/files/images/" + fileObj._id
+//            };
+//          }
+//        });
+//     });
    }
 });
 

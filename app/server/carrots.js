@@ -6,7 +6,7 @@ Meteor.publish("carrots", function () {
 
 
 Meteor.methods({
-	addCarrot: function (reward,tasks) {
+	addCarrot: function (reward,tasks,image) {
 		if (! Meteor.userId()) {
 			throw new Meteor.Error("not-authorized");
 			return false;
@@ -15,15 +15,10 @@ Meteor.methods({
 			carrot: reward,
 			createdAt: new Date(),
 			owner: Meteor.userId(),
-			tasks: tasks
+			tasks: tasks,
+			imageID: image
 		});
 		return false;
-	},
-	addImage: function(userId,imagesURL) {
-		Images.insert({
-			image: imagesURL,
-			user: userId
-		});
 	}
 });
 
