@@ -19,6 +19,9 @@ Router.route('/taskList', {
 });
 
 Router.route('/carrotList', {
+	waitOn: function () {
+ 		return Meteor.subscribe('images')
+ 	},
   name: 'carrotList',
   controller: 'CarrotListController',
   action: 'action',
