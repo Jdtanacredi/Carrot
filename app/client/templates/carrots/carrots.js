@@ -24,41 +24,45 @@ console.log(taskIds);
 });
 
 Template.carrotList.events({
-	"submit .new-carrot": function(event) {
+	"submit .new-carrot": function(event, template) {
+		event.preventDefault();
 		var carrotReward = event.target.text.value;
 		var associatedTasks = $(".associatedTasks:checked").map(function() {
 			return this.value;
 		}).get();
-		debugger;
-		FS.Utility.eachFile(event, function(file) {
-			Images.insert(file, function (err, fileObj) {
-				console.log(file);
+		var imageID, file;
+		file = template.find('.myFileInput').files[0];
+		file = new FS.File(file);
+		// console.log(file);
+// 		FS.Utility.eachFile(event, function(file) {
+			Images.insert(file, function (err, file) {
 				if (err){
 					 // handle error
+					 console.log(err);
 				} else {
-					 // handle success depending what you need to do
-//            var userId = Meteor.userId();
-					var imageID = fileObj._id;
+					console.log(file);
+// 					 // handle success depending what you need to do
+					imageID = file._id;
+					console.log("imageID:" + imageID)
 					var imagesURL = {
-						"profile.image": "/cfs/files/images/" + fileObj._id
+						"profile.image": "/cfs/files/images/" + file._id
 					};
+					Meteor.call("addCarrot", carrotReward, associatedTasks,imageID);	
 				}
 			});
-    });
-		
-		
-		Meteor.call("addCarrot", carrotReward, associatedTasks,imagesID);
 		return false;
 	},
 	'change .myFileInput': function(event, template) {
 //      FS.Utility.eachFile(event, function(file) {
+
 //        Images.insert(file, function (err, fileObj) {
-//					console.log(file);
+// 					console.log(file);
 //          if (err){
 //             // handle error
 //          } else {
 //             // handle success depending what you need to do
-////            var userId = Meteor.userId();
+// //            var userId = Meteor.userId();
+// 					 imageID = fileObj._id;
 //            var imagesURL = {
 //              "profile.image": "/cfs/files/images/" + fileObj._id
 //            };
