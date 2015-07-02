@@ -27,9 +27,10 @@
 <template name="taskItem">
   <li class="taskItem {{#if checked}}checked{{/if}}">
 		<input class="toggleComplete" id="option" type="checkbox" value="option" checked="{{checked}}">
-  	<label for="option">Value</label>
+  	<label for="option">{{text}}</label>
 <!--  	<div class="toggleComplete">This will be a checkbox</div>-->
-		<div>{{text}}</div>
+<!--		<div>{{text}}</div>-->
   	<div>{{owner this.owner}}</div>
+  	<div>{{carrotImage this._id}}</div>
   </li>
 </template>

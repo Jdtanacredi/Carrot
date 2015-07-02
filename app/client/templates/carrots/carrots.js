@@ -49,7 +49,7 @@ Template.carrotList.events({
 					};
 					Meteor.call("addCarrot", carrotReward, associatedTasks,imageID);	
 				}
-			});
+			});	
 		return false;
 	},
 	'change .myFileInput': function(event, template) {

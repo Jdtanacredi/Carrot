@@ -13,8 +13,12 @@ Template.task.helpers({
 
 Template.taskItem.helpers({
 	owner: function (id) {
-		console.log('id: ' + id);
+//		console.log('id: ' + id);
 		return Meteor.users.findOne(id).profile.name;
+	},
+	carrotImage: function(id) {
+		console.log(id);
+//		return Carrots.find({'id':{$in:taskIds}});
 	}
 });
 
@@ -26,6 +30,7 @@ Template.task.events({
 		return false;
 	},
 	"click .toggleComplete": function (event) {
+		console.log(this);
 		var thisclick = $(this).get(0);
 		Meteor.call("setChecked", this._id, ! this.checked);
 	}
