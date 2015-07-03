@@ -17,8 +17,8 @@ Template.taskItem.helpers({
 		return Meteor.users.findOne(id).profile.name;
 	},
 	carrotImage: function(id) {
-		console.log(id);
-//		return Carrots.find({'id':{$in:taskIds}});
+		var carrotImage = Carrots.find({'tasks':id}).fetch();
+		return carrotImage[0].imageID;
 	}
 });
 
