@@ -1,0 +1,9 @@
+.navigation-container {width: 100%;}
+
+ul li {
+	float: left;
+	width: 33.3%;
+	padding: 15px 0;
+	background-color: #EEE;
+	text-align: center;
+}

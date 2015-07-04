@@ -6,18 +6,19 @@
         <input type="text" name="text" placeholder="Type to add new tasks" />
       </form>
     </header>
-    <ul class="pendingTasks">
+    <ul class="pendingTasks clearfix">
 			<h3>pending tasks</h3>
       {{#each tasks}} 
         {{> taskItem}}
       {{/each}}
     </ul>
-		<ul class="completedTasks">
+		<ul class="completedTasks clearfix">
 			<h3>completed</h3>
 			{{#each completedTasks}}
 				{{> taskItem}}
 			{{/each}}
 		</ul>
+		{{> navigation}}
   </div>
   {{/if}}
 </template>
