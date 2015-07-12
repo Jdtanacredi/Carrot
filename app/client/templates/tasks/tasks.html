@@ -26,12 +26,12 @@
 
 
 <template name="taskItem">
-  <li class="taskItem {{#if checked}}checked{{/if}}">
+  <li class="clearfix taskItem {{#if checked}}checked{{/if}}">
 		<input class="toggleComplete" id="option" type="checkbox" value="option" checked="{{checked}}">
   	<label for="option">{{text}}</label>
 <!--  	<div class="toggleComplete">This will be a checkbox</div>-->
 <!--		<div>{{text}}</div>-->
- 		<div><img src="/cfs/files/images/{{carrotImage this._id}}" alt=""></div>
+ 		<div><img class="task-image" src="/cfs/files/images/{{carrotImage this._id}}" alt=""></div>
   	<div>{{owner this.owner}}</div>
   </li>
 </template>

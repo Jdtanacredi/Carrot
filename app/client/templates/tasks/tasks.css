@@ -80,7 +80,8 @@ li {
   padding: 15px;
   /*border-bottom: #eee solid 1px;*/
 }
-
+.taskItem, .completedTask {width: 100%;}
+.taskItem input, .taskItem label {float: left;}
 .taskItem:nth-child(odd) {
 	background: #E9E7E7;
 }
@@ -113,21 +114,16 @@ header .hide-completed {
   margin-left: 5px;
 }
 
-/*
-.taskItem input[type='checkbox'] {
-	width: 2em;
-  margin: 0;
-  padding: 0;
-  font-size: 1em;
-  opacity: 0;
+
+/*IMAGE*/
+.task-image {
+  width: 175px;
+  float: right;
+  border-radius: 25px;
+  margin: 20px;
 }
 
-.taskItem label {
-	display: inline-block;
-  margin-left: -2em;
-  line-height: 1.5em;
-}
-*/
+
 
 @media (max-width: 600px) {
   li {

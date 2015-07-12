@@ -1,6 +1,6 @@
-.navigation-container {width: 100%;}
+.navigation-container {width: 100%; position: fixed; bottom: 0;}
 
-ul li {
+.navigation-container li {
 	float: left;
 	width: 33.3%;
 	padding: 15px 0;

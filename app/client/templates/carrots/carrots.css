@@ -1,0 +1,12 @@
+.carrot-image {
+  width: 175px;
+  /* float: right; */
+  border-radius: 25px;
+  margin: 20px;
+}
+
+.carrot-listpage-container {
+	width: 50%;
+	text-align: center;
+	float: left;
+}
