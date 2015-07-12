@@ -78,7 +78,7 @@ li {
   position: relative;
   list-style: none;
   padding: 15px;
-  border-bottom: #eee solid 1px;
+  /*border-bottom: #eee solid 1px;*/
 }
 
 .taskItem:nth-child(odd) {

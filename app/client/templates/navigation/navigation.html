@@ -1,9 +1,9 @@
 <template name="navigation">
 	<nav class="navigation-container clearfix">
 		<ul>
-			<li>Tasks</li>
-			<li>Dash</li>
-			<li>Carrots</li>
+			<a href="{{ pathFor 'taskList' }}"><li>Tasks</li></a>
+			<a href="{{ pathFor '' }}"><li>Dash</li></a>
+			<a href="{{ pathFor 'carrotList' }}"><li>Carrots</li></a>
 		</ul>
 	</nav>
 </template>
