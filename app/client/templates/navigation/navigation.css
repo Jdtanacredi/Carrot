@@ -7,3 +7,12 @@
 	background-color: #EEE;
 	text-align: center;
 }
+
+.navigation-container.view-carrotList a:last-child li {
+	background: #444;
+	color: #fff;
+} 
+.navigation-container.view-task a:first-child li {
+	background:#444;
+	color: #fff;
+}

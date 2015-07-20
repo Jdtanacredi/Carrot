@@ -13,7 +13,6 @@ Template.carrotList.helpers({
 Template.carrot.helpers({
 	tasks: function (id) {
 		var taskIds = Template.instance().data.tasks;
-console.log(taskIds);
 		return Tasks.find({'_id':{$in:taskIds}});
 	},
 	task: function (id, carrotId) {

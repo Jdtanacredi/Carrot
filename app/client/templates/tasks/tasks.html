@@ -1,6 +1,6 @@
 <template name="task">
-{{#if currentUser}}
   <div class="container">
+{{#if currentUser}}
     <header>
       <form class="new-task">
         <input type="text" name="text" placeholder="Type to add new tasks" />
@@ -18,9 +18,9 @@
 				{{> taskItem}}
 			{{/each}}
 		</ul>
-		{{> navigation}}
-  </div>
   {{/if}}
+  {{> navigation}}
+  </div>
 </template>
 
 
